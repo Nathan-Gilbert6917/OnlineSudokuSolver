@@ -40,3 +40,10 @@ TODO later, fix this by generating a valid board on the first attempt instead of
 
 # The Sudoku Solver is a utility function to solve the Sudoku board using an algorithm
 
+# Future ideas
+
+- User support
+- Friend support
+- Global leaderboard score/time/difficulty
+- Timed trial against another user
+- Timed trial against yourself per difficulty
