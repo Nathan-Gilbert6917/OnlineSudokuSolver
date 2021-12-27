@@ -1,5 +1,7 @@
 # OnlineSudokuSolver 
 
+Project Document: https://docs.google.com/document/d/1Ys1ROa5kuG_lWiXEOBn_Wq3npsfB21wGzolh8VYxDmU/edit?usp=sharing
+
 There are three main parts to this project:
 
 - React Frontend
