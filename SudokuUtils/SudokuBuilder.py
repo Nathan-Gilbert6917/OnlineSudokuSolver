@@ -1,4 +1,3 @@
-from math import e
 import random
 # File used to generate a random valid sudoku board
 
@@ -8,12 +7,12 @@ class Board():
         self.valid = False
         self.board_layout = []
         # Adds 81 Basic BoardCells to the board 
-        for x in range(81):
-            self.board_layout.append(BoardCell())
+        for area in range(1,10):
+            for area_cell in range(9):
+                self.board_layout.append(BoardCell(area))
         # Sets the adjacent cells for each BoardCell
         self._set_adjacent_cells()
-        # Loops over all cells and set the correct area they reside
-        self._set_board_areas()
+
         # Fills the whole board with values to see if it is a valid sudoku board
         self.valid = self._fill_board()
         
@@ -166,35 +165,13 @@ class Board():
                 cell.set_adjacent_cell('bottom', self.board_layout[cell_idx + 9])
             cell_idx += 1
 
-    # Sets the area number for each cell in the board
-    def _set_board_areas(self):
-        areas = [0, 3, 6, 27, 30, 33, 54, 57, 60]
-        area_num = 1
-        for idx in areas:
-            self._set_cell_area(self.board_layout[idx], area_num)
-            area_num += 1
 
-    # Sets the area number for each cell in an area
-    def _set_cell_area(self, cell, area_num):
-        cells_set = 1
-        cell.area = area_num
-        current_cell = cell
-        for y in range(3):
-            for x in range(2):
-                current_cell = current_cell.get_adjacent_cell('right')
-                current_cell.area = area_num
-                cells_set += 1
-            if (cells_set < 9):
-                current_cell = current_cell.get_adjacent_cell('bottom').get_adjacent_cell(
-                    'left').get_adjacent_cell('left')
-                current_cell.area = area_num
-                cells_set += 1
 
 # Class to represent a cell on the board
 class BoardCell():
-    def __init__(self):
+    def __init__(self, area):
         self.value = 0
-        self.area = None
+        self.area = area
         self.adjacent_cells = {
             'left': None,
             'right': None,
